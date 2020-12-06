@@ -1,3 +1,4 @@
 env/
-inputs/
-preprocessed/
+inputs/*
+preprocessed/*
+models/*

@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import config
 
 def create_time_series_folds(df, base_train_days, val_days=40):
     
@@ -25,14 +26,15 @@ def create_time_series_folds(df, base_train_days, val_days=40):
     print('Complete.')
         
     return df
-    return df
 
 if __name__ == '__main__':
     
-    train_index = pd.read_csv('./inputs/train.csv', usecols=['date'])
+    train_index = pd.read_csv(config.RAW_FILE) # , usecols=['date']
     
     train_fold_ind = create_time_series_folds(train_index, 
                                               base_train_days = 300, 
                                               val_days = 40)
     
-    train_fold_ind.to_csv('./preprocessed/train_fold_ind.csv',index=False)
+    train_fold_ind.to_parquet('./preprocessed/train_fold_ind.parquet',
+                              engine='fastparquet',
+                              compression='gzip')
