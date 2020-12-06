@@ -1,4 +1,10 @@
 env/
+
 inputs/*
+!inputs/.gitkeep 
+
 preprocessed/*
+!preprocessed/.gitkeep
+
 models/*
+!models/.gitkeep
